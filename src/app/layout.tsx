@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <Header />
         <AnimatedContainer>{children}</AnimatedContainer>
-        <CustomCursor />
+        <CustomCursor showIcon={null}/>
         <Footer />
       </body>
     </html>
