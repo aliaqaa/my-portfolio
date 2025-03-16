@@ -8,7 +8,7 @@ const Skills = () => {
 
   const frontend = [
     { name: "HTML", value: 100 },
-    { name: "CSS", value: "85" },
+    { name: "CSS", value: 85 },
     { name: "JavaScript", value: 90 },
     { name: "TypeScript", value: 20 },
     { name: "React JS", value: 33 },
@@ -21,7 +21,7 @@ const Skills = () => {
     { name: "MongoDB", value: 90 },
   ];
 
-  const toggleSection = (section) => {
+  const toggleSection = (section:any) => {
     setOpenSection(openSection === section ? null : section);
   };
 
