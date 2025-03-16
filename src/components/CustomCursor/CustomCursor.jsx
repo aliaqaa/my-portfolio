@@ -34,7 +34,7 @@ const CustomCursor = ({ showIcon }) => {
           width: '40px',  
           height: '40px',  
           borderRadius: '50%',  
-          backgroundColor: 'rgba(255, 0, 0, 0.5)', // Change color as needed  
+          backgroundColor: 'rgba(247, 241, 241, 0.5)', // Change color as needed  
           pointerEvents: 'none',  
         }}  
         animate={controls}  

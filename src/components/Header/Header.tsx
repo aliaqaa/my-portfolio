@@ -13,7 +13,6 @@ function Header() {
     { id: 3, title: "Contact", href: "/contact" },  
   ];  
 
-  console.log(pathname); // Now this will log the correct path
 
   return (  
     <div className="container w-screen m-auto flex justify-between px-10">  
