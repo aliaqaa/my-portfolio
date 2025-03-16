@@ -1,6 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { sendEmail } from "@/utils/email";
 import useScrollNavigation from "@/hooks/useScrollNavigation";
 import { TfiEmail } from "react-icons/tfi";
 import { FaPhone } from "react-icons/fa6";
@@ -9,8 +8,8 @@ import { IoLocationOutline } from "react-icons/io5";
 const ContactForm = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (data: any) => {
-    await sendEmail(data);
+  const onSubmit = async () => {
+   
     alert("Message sent successfully!");
   };
   useScrollNavigation();
