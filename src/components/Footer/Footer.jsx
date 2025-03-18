@@ -26,8 +26,9 @@ function Footer() {
                     <FaGithub />  
                 </a>  
             </div>  
+            
         </footer>  
-            <div className='absolute bottom-32 right-0 text-white whitespace-nowrap rotate-90 flex items-center gap-2 uppercase'>  
+            <div className='absolute  bottom-32 right-0 text-white whitespace-nowrap rotate-90 flex items-center gap-2 uppercase'>  
                 {pathname === '/contact' ? (  
                     <Link href="/portfolio" className='flex rotate-180 cursor-none'>  
                             Scroll Top <FaArrowRight className='text-2xl' /> 

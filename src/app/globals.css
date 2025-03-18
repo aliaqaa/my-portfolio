@@ -91,9 +91,7 @@
   }
 }
 /* For WebKit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
 
-}
 .accordion-content {  
   max-height: 0;  
   overflow: hidden;  

@@ -12,14 +12,14 @@ export default function AnimatedContainer({
   const pathname = usePathname();
 
   const variants = {
-    initial: { opacity: 0, x: 1000, },
-    animate: { opacity: 1, x: 0, },
+    initial: { opacity: 0, y: 1000, },
+    animate: { opacity: 1, y: 0, },
     
-    exit: { opacity:0, x: -1000, },
+    exit: { opacity:1, y: -1000, },
   };
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence >
       <motion.div
         key={pathname}
         variants={variants}

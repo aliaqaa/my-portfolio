@@ -20,7 +20,7 @@ const CustomCursor = ({ showIcon }) => {
   }, []);  
 
   useEffect(() => {  
-    controls.start({ x: cursorPosition.x - 20, y: cursorPosition.y - 20 });  
+    controls.start({ x: cursorPosition.x - 10, y: cursorPosition.y - 10 });  
   }, [cursorPosition, controls]);  
 
   return (  

@@ -1,35 +1,54 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-
-// Define your page routes in order
 
 export default function useScrollNavigation() {
   const router = useRouter();
   const pathname = usePathname();
-  
-  const pages = ["/","/about","/portfolio","/contact",];
 
-useEffect(() => {
+  const pages = ["/", "/about", "/portfolio", "/contact"];
+
+  useEffect(() => {
+    let touchStartY = 0;
+    let touchEndY = 0;
+
     const handleWheel = (event: WheelEvent) => {
-      const currentIndex = pages.indexOf(pathname);
-      if (currentIndex === -1) return; // Avoid errors if pathname is not found
+      navigatePages(event.deltaY > 0 ? "down" : "up");
+    };
 
-      if (event.deltaY > 0) {
-        // Scroll down
-        if (currentIndex < pages.length - 1) {
-          router.push(pages[currentIndex + 1]);
-        }
-      } else if (event.deltaY < 0) {
-        // Scroll up
-        if (currentIndex > 0) {
-          router.push(pages[currentIndex - 1]);
-        }
+    const handleTouchStart = (event: TouchEvent) => {
+      touchStartY = event.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (event: TouchEvent) => {
+      touchEndY = event.changedTouches[0].clientY;
+      if (touchStartY - touchEndY > 50) {
+        navigatePages("down"); // Swipe up → Scroll down
+      } else if (touchEndY - touchStartY > 50) {
+        navigatePages("up"); // Swipe down → Scroll up
+      }
+    };
+
+    const navigatePages = (direction: "up" | "down") => {
+      const currentIndex = pages.indexOf(pathname);
+      if (currentIndex === -1) return;
+
+      if (direction === "down" && currentIndex < pages.length - 1) {
+        router.push(pages[currentIndex + 1]);
+      } else if (direction === "up" && currentIndex > 0) {
+        router.push(pages[currentIndex - 1]);
       }
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [pathname, router]); // Ensure effect runs when pathname changes
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [pathname, router]);
 }
